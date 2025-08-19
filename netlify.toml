@@ -1,3 +1,8 @@
 [build]
-  command = "export CHROME_BIN=${PWD}/node_modules/puppeteer/.local-chromium/$(ls -x -1 ${PWD}/node_modules/puppeteer/.local-chromium)/chrome-linux/chrome && npm run build"
+  command = "npm run build"
   publish = "dist/pokemon-ssr/browser"
+
+[context.production.environment]
+  # Puedes usar una versión específica, o dejarlo sin versión para la más reciente
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
+  CHROME_BIN = "/usr/bin/google-chrome"
